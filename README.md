@@ -2,6 +2,8 @@
 
 ## Installation
 
+Use `git clone https://github.com/Thesharing/court-spider --recursive ` to clone this repo into local.
+
 ### Python
 
 Requires python >= 3.5, better use anaconda.
@@ -71,11 +73,11 @@ Then run proxy.
 python main.py
 ```
 
-Access [127.0.0.1/get_status](127.0.0.1/get_status) to check the status of proxy pool.
+Access 127.0.0.1/get_status to check the status of proxy pool.
 
 `raw_proxy` means unvalidated proxy, `useful_proxy` means validated proxy. Change the website used to validate the proxies in `Util/utilFunction.py`.
 
-Make sure the number of `useful_proxy` > 0.
+Make sure the number of `useful_proxy` > 0, so that the spider can run with available proxies.
 
 Finally, run the spider.
 
@@ -83,6 +85,15 @@ Finally, run the spider.
 
 ```ba
 python main.py
+```
+
+## Update
+
+If you want to update this repo, please `push` the changes in the submodule, and then go back to the root folder of this project.
+
+```bash
+git submodule update
+git add . 
 ```
 
 
