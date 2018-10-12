@@ -94,9 +94,9 @@ If you want to update this repo, please `push` the changes in the submodule, and
 ```bash
 git submodule update
 git add . 
+git commit -m '<Commit Message>'
+git push
 ```
-
-
 
 ## Reference
 
