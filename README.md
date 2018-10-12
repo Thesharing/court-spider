@@ -2,7 +2,7 @@
 
 ## Installation
 
-Use `git clone https://github.com/Thesharing/court-spider --recursive ` to clone this repo into local.
+Use `git clone git@github.com:Thesharing/court-spider.git --recursive ` to clone this repo into local.
 
 ### Python
 
