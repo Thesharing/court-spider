@@ -2,6 +2,8 @@
 
 ## Installation
 
+### Git
+
 Use `git clone git@github.com:Thesharing/court-spider.git --recursive ` to clone this repo into local.
 
 ### Python
@@ -9,7 +11,7 @@ Use `git clone git@github.com:Thesharing/court-spider.git --recursive ` to clone
 Requires python >= 3.5, better use anaconda.
 
 ```bash
-conda install certifi chardet idna numpy requests six urllib3 werkzeug Flask lxml
+conda install certifi chardet idna numpy requests six urllib3 werkzeug Flask lxml python-dateutil
 pip install opencv-python PyExecJS pymongo redis
 ```
 
@@ -45,13 +47,17 @@ cd ../proxy
 touch key.txt
 ```
 
-
-
 ## Config
 
 Refer to [Thesharing/proxy_pool](https://github.com/Thesharing/proxy_pool) to modify the config of Redis.
 
 Customize the spider in config.py and main.py.
+
+To resume an interrupted process, copy start_example.json as start.json and modify the content like:
+
+```json
+{"district": "北京市", "date": "1990-01-01"}
+```
 
 ## Execution
 
@@ -87,12 +93,20 @@ Finally, run the spider.
 python main.py
 ```
 
-## Update
+##  Update
 
-If you want to update this repo, please `push` the changes in the submodule, and then go back to the root folder of this project.
+Run the command below in the root folder of this project to receive the newest updates.
 
 ```bash
-git submodule update
+git submodule update --recursive --remote
+```
+
+## Commit
+
+If you want to commit changes to this repo, please first `push` the changes in the submodule, then go back to the root folder of this project and run the commands below.
+
+```bash
+git submodule update --remote
 git add . 
 git commit -m '<Commit Message>'
 git push
