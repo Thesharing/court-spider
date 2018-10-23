@@ -8,7 +8,7 @@ Use `git clone git@github.com:Thesharing/court-spider.git --recursive ` to clone
 
 ### Python
 
-Requires python >= 3.5, better use anaconda.
+Requires Python >= 3.5, and the newest version of Anaconda 3 is better.
 
 ```bash
 conda install certifi chardet idna numpy requests six urllib3 werkzeug Flask lxml python-dateutil
@@ -17,7 +17,9 @@ pip install opencv-python PyExecJS pymongo redis
 
 ### Redis
 
-[Reference](https://redis.io/download)
+Use **Ubuntu on bash on Windows** if you are using Windows 10. 
+
+Use VMWare or VirtualBox if you are using Windows 8 or 7. In VMWare you need to config port forwarding of NAT network in order to access Redis in Windows.
 
 ```bash
 wget http://download.redis.io/releases/redis-4.0.11.tar.gz
@@ -28,15 +30,17 @@ cd redis
 make
 ```
 
-### Nodejs
+[Reference](https://redis.io/download)
 
-[Reference](https://nodejs.org/zh-cn/download/package-manager/#debian-and-ubuntu-based-linux-distributions)
+### NodeJS
 
 ```bash
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
 nodejs --version
 ```
+
+[Reference](https://nodejs.org/zh-cn/download/package-manager/#debian-and-ubuntu-based-linux-distributions)
 
 ### Folders
 
@@ -51,9 +55,9 @@ touch key.txt
 
 Refer to [Thesharing/proxy_pool](https://github.com/Thesharing/proxy_pool) to modify the config of Redis.
 
-Customize the spider in config.py and main.py.
+Customize the spider in `config.py` and `main.py`.
 
-To resume an interrupted process, copy start_example.json as start.json and modify the content like:
+To resume an interrupted process, copy `start_example.json` as `start.json` and modify the content like:
 
 ```json
 {"district": "北京市", "date": "1990-01-01"}
@@ -61,9 +65,9 @@ To resume an interrupted process, copy start_example.json as start.json and modi
 
 ## Execution
 
-First, run Redis.
+**First**, run Redis.
 
-Use Ubuntu on bash on Windows if you are using Windows.
+Use Ubuntu on bash on Windows if you are using Windows 10. 
 
 (In the path of Redis)
 
@@ -71,7 +75,7 @@ Use Ubuntu on bash on Windows if you are using Windows.
 src/redis-server
 ```
 
-Then run proxy.
+**Then**, run the proxy.
 
 (In `court-spider/proxy`)
 
@@ -79,13 +83,15 @@ Then run proxy.
 python main.py
 ```
 
-Access 127.0.0.1/get_status to check the status of proxy pool.
+Access [127.0.0.1/get_status](http://127.0.0.1/get_status) to check the status of proxy pool.
 
-`raw_proxy` means unvalidated proxy, `useful_proxy` means validated proxy. Change the website used to validate the proxies in `Util/utilFunction.py`.
+`raw_proxy` means unvalidated proxy, `useful_proxy` means validated proxy. 
+
+Change the website used to validate the proxies in `Util/utilFunction.py`.
 
 Make sure the number of `useful_proxy` > 0, so that the spider can run with available proxies.
 
-Finally, run the spider.
+**Finally**, run the spider.
 
 (In `court-spider/spider`)
 
