@@ -128,7 +128,7 @@ src/redis-server
 python main.py
 ```
 
-Access [127.0.0.1/get_status](http://127.0.0.1/get_status) to check the status of proxy pool.
+Access [127.0.0.1:5010/get_status](http://127.0.0.1:5010/get_status) to check the status of proxy pool.
 
 `raw_proxy` means unvalidated proxy, `useful_proxy` means validated proxy. 
 
