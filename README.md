@@ -102,7 +102,7 @@ If you want to resume from a breakpoint, modify `start` part like this:
         "date": "2015-12-15",
         "district": "北京市"
     },
-    ... ...
+    “...”: "..."
 }
 ```
 
@@ -146,9 +146,10 @@ python main.py
 
 ##  Update
 
-Run the command below in the root folder of this project to receive the newest updates.
+Run the commands below in the root folder of this project to receive the newest updates.
 
 ```bash
+git pull
 git submodule update --recursive --remote
 ```
 
