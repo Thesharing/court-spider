@@ -8,6 +8,8 @@ Use `git clone git@github.com:Thesharing/court-spider.git --recursive ` to clone
 
 ### Python
 
+*Linux and Windows:*
+
 Requires [Python](https://www.python.org/downloads/) >= 3.5, and the newest version of [Anaconda 3](https://www.anaconda.com/download/) is better.
 
 ```bash
@@ -21,13 +23,15 @@ You can use [virtualenv](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348
 
 ### Redis
 
-*If you are using Windows*:
+*Windows:*
 
 Use <u>Ubuntu on bash</u> on Windows if you are using Windows 10. 
 
 Use VMWare or VirtualBox if you are using Windows 8 or 7. In VMWare you need to config port forwarding of NAT network in order to access Redis in Windows.
 
 You just need to run Redis in bash, other components can still run in Windows.
+
+*Linux and Windows:*
 
 ```bash
 wget http://download.redis.io/releases/redis-4.0.11.tar.gz
@@ -42,15 +46,23 @@ make
 
 ### NodeJS
 
+*Linux:*
+
 ```bash
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
 nodejs --version
 ```
 
+*Windows:*
+
+Download lastest LST version executable installer to install.
+
 [Reference to install NodeJS](https://nodejs.org/zh-cn/download/package-manager/#debian-and-ubuntu-based-linux-distributions)
 
 ### Folders
+
+*Linux:*
 
 ```bash
 cd spider
@@ -58,6 +70,10 @@ mkdir content data download log temp
 cd ../proxy
 touch key.txt
 ```
+
+*Windows:*
+
+Mannually create the folders and files mentioned above.
 
 ## Config
 
@@ -67,28 +83,36 @@ Customize the spider in `config.json`:
 
 ```json
 {
-    "start": {
-        "date": null,
-        "district": null
+  "start": {
+    "date": "2017-05-11",
+    "district": "北京市",
+    "court": null
+  },
+  "search": {
+    "keyword": "*",
+    "type": null,
+    "reason": {
+      "value": "知识产权与竞争纠纷",
+      "level": 2
     },
-    "search": {
-        "keyword": "*",
-        "type": null
+    "court": {
+      "value": null,
+      "level": 0,
+      "indicator": false
     },
-    "condition": {
-        "案由": null,
-        "法院层级": null,
-        "案件类型": "民事案件",
-        "审判程序": null,
-        "文书类型": null,
-        "法院地域": null,
-        "二级案由": "知识产权与竞争纠纷"
-    },
-    "config": {
-        "maxRetry": 10,
-        "proxy": true,
-        "timeout": 60
-    }
+    "district": null
+  },
+  "condition": {
+    "法院层级": null,
+    "案件类型": "民事案件",
+    "审判程序": null,
+    "文书类型": null
+  },
+  "config": {
+    "max_retry": 10,
+    "proxy": true,
+    "timeout": 60
+  }
 }
 ```
 
@@ -98,15 +122,14 @@ If you want to resume from a breakpoint, modify `start` part like this:
 
 ```json
 {
-	"start": {
-        "date": "2015-12-15",
-        "district": "北京市"
-    },
-    “...”: "..."
+  "start": {
+    "date": "2017-05-11",
+    "district": "北京市",
+    "court": null
+  },
+  "...": "..."
 }
 ```
-
-
 
 ## Execution
 
@@ -141,7 +164,7 @@ Make sure the number of `useful_proxy` > 0, so that the spider can run with avai
 (In `court-spider/spider/Run`)
 
 ```ba
-python main.py
+python main.py -s date
 ```
 
 ##  Update
