@@ -8,7 +8,7 @@ Use `git clone git@github.com:Thesharing/court-spider.git --recursive ` to clone
 
 ### Python
 
-*Linux and Windows:*
+*Linux or Windows:*
 
 Requires [Python](https://www.python.org/downloads/) >= 3.5, and the newest version of [Anaconda 3](https://www.anaconda.com/download/) is better.
 
@@ -31,7 +31,9 @@ Use VMWare or VirtualBox if you are using Windows 8 or 7. In VMWare you need to 
 
 You just need to run Redis in bash, other components can still run in Windows.
 
-*Linux and Windows:*
+Also you can install pre-compiled version for Windows referring to this page: [Redis Install | Runoob](http://www.runoob.com/redis/redis-install.html)
+
+*Linux or Bash on Ubuntu on Windows:*
 
 ```bash
 wget http://download.redis.io/releases/redis-4.0.11.tar.gz
@@ -73,11 +75,11 @@ touch key.txt
 
 *Windows:*
 
-Mannually create the folders and files mentioned above.
+Manually create the folders and files mentioned above.
 
 ## Config
 
-Refer to [Thesharing/proxy_pool](https://github.com/Thesharing/proxy_pool) to modify the config of Redis.
+Refer to [Thesharing/proxy_pool](https://github.com/Thesharing/proxy_pool) to modify the config of Redis in proxy.
 
 Customize the spider in `config.json`:
 
@@ -112,6 +114,17 @@ Customize the spider in `config.json`:
     "max_retry": 10,
     "proxy": true,
     "timeout": 60
+  },
+  "database": {
+    "redis": {
+      "host": "localhost",
+      "port": 6379
+    },
+    "mongodb": {
+      "host": "localhost",
+      "port": 27017,
+      "database": "spider"
+    }
   }
 }
 ```
@@ -135,7 +148,7 @@ If you want to resume from a breakpoint, modify `start` part like this:
 
 **First**, run Redis.
 
-Use Ubuntu on bash on Windows if you are using Windows 10. 
+*Use Ubuntu on bash on Windows if you are using Windows 10.* 
 
 (In the path of Redis)
 
@@ -145,7 +158,7 @@ src/redis-server
 
 **Then**, run the proxy.
 
-(In `court-spider/proxy`)
+(In `court-spider/proxy/Run`)
 
 ```bash
 python main.py
@@ -161,7 +174,7 @@ Make sure the number of `useful_proxy` > 0, so that the spider can run with avai
 
 **Finally**, run the spider.
 
-(In `court-spider/spider/Run`)
+(In `court-spider/spider`)
 
 ```ba
 python main.py -s date
