@@ -81,6 +81,8 @@ Manually create the folders and files mentioned above.
 
 Refer to [Thesharing/proxy_pool](https://github.com/Thesharing/proxy_pool) to modify the config of Redis in proxy.
 
+At first run, copy `config.example.json` as `config.json` and modify the configs.
+
 Customize the spider in `config.json`:
 
 ```json
@@ -125,11 +127,12 @@ Customize the spider in `config.json`:
       "port": 27017,
       "database": "spider"
     }
+  },
+  "log": {
+    "level": "INFO"
   }
 }
 ```
-
-At first run, copy `config.example.json` as `config.json` and modify the configs.
 
 If you want to resume from a breakpoint, modify `start` part like this:
 
