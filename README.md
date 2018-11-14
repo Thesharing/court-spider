@@ -69,8 +69,6 @@ Download lastest LST version executable installer to install.
 ```bash
 cd spider
 mkdir content data download log temp
-cd ../proxy
-touch key.txt
 ```
 
 *Windows:*
