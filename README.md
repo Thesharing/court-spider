@@ -6,13 +6,13 @@
   * [Redis](#Redis)
   * [MongoDB](#MongoDB)
   * [NodeJS](#NodeJS)
-  * [New Folders](#New Folders)
+  * [New Folders](#New-Folders)
 * [Config](#Config)
 * [Execution](#Execution)
-  * [Argument Lists](#Argument Lists)
+  * [Argument Lists](#Argument-Lists)
 * [Update](#Update)
 * [Commit](#Commit)
-* [TODO List](#todo list)
+* [TODO List](#TODO-List)
 * [Reference](#Reference)
 
 ## Installation
