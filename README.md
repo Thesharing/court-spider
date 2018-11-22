@@ -9,20 +9,20 @@
 
 ## Table of Contents
 
-* [Installation](#Installation)
+* [Installation](#--------installation----)
   * [Git](#Git)
   * [Python](#Python)
   * [Redis](#Redis)
   * [MongoDB](#MongoDB)
   * [NodeJS](#NodeJS)
   * [New Folders](#New-Folders)
-* [Config](#Config)
-* [Execution](#Execution)
+* [Config](#--------config----)
+* [Execution](#--------execution----)
   * [Argument Lists](#Argument-Lists)
-* [Update](#Update)
-* [Commit](#Commit)
-* [TODO List](#TODO-List)
-* [Reference](#Reference)
+* [Update](#--------update----)
+* [Commit](#--------commit----)
+* [TODO List](#--------todo-list----)
+* [Reference](#--------reference----)
 
 <div align="center">
     <img src='./img/installation.png' height="128px"/>
