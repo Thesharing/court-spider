@@ -1,4 +1,13 @@
-# Judgement Document Spider
+
+
+<div align="center">
+    <img src='./img/logo.png' height="192px"/>
+    <h1>
+        Judgement Document Spider
+    </h1>
+</div>
+
+## Table of Contents
 
 * [Installation](#Installation)
   * [Git](#Git)
@@ -15,7 +24,12 @@
 * [TODO List](#TODO-List)
 * [Reference](#Reference)
 
-## Installation
+<div align="center">
+    <img src='./img/installation.png' height="128px"/>
+    <h2>
+        Installation
+    </h2>
+</div>
 
 ### Git
 
@@ -149,7 +163,13 @@ cd spider
 mkdir content data download log temp
 ```
 
-## Config
+<div align="center">
+    <img src='./img/config.png' height="128px"/>
+    <h2>
+        Config
+    </h2>
+</div>
+
 
 Refer to [Thesharing/proxy_pool](https://github.com/Thesharing/proxy_pool) to modify the config of Redis in proxy.
 
@@ -224,8 +244,12 @@ If you want to resume from a breakpoint, modify `start` part like this:
 }
 ```
 
-## Execution
-
+<div align="center">
+    <img src='./img/execution.png' height="128px"/>
+    <h2>
+        Execution
+    </h2>
+</div>
 **First**, run Redis.
 
 *Use Ubuntu on bash on Windows if you are using Windows 10.* 
@@ -268,6 +292,12 @@ To run downloader, run the command below:
 python main.py -d download
 ```
 
+Before you run the downloader, you may need to extract all the DocID from local files (written by spider) to Redis, run the command below:
+
+```bash
+python main.py -d read
+```
+
 If you are running two o more task at the same time, you can specify different configs like this:
 
 ```bash
@@ -288,9 +318,9 @@ To enable multi-process mode, specify the multi-process config in config.json li
 }
 ```
 
-`Total` is the total number of processes  to run spiders and downloaders, which should be equal to the number of logic cores of you CPU (you can see the number in Task Manager in Windows).
+`total` is the total number of processes  to run spiders and downloaders, which should be equal to the number of logic cores of you CPU (you can see the number in Task Manager in Windows).
 
-`Spider` and `Downloader` is the number of spiders and downloaders (at present multi-process spider is not supported).
+`spider` and `downloader` is the number of spiders and downloaders (at present multi-process spider is not supported).
 
 Then run without `-s` or `-d`  like this:
 
@@ -307,13 +337,18 @@ Optional arguments:
 | -h, --help                                           | Show this help message and exit                              |
 | -s [{date,district}], --spider [{date,district}]     | Start a spider to crawl data by date (not implemented yet) or by district |
 | -d [{read,download}], --downloader [{read,download}] | Read content from doc-id files (`read`) or start a downloader (`download`) |
-| -c [config], --config [config.json]                  | Specify the filename of config                               |
+| -c [config.json], --config [config.json]             | Specify the filename of config                               |
 
 `-s` and `-d` should not be used at the same time.
 
-Multi-process mode if both `-s` and `-d` is not used.
+Enable multi-process mode if both `-s` and `-d` is not used.
 
-##  Update
+<div align="center">
+    <img src='./img/update.png' height="128px"/>
+    <h2>
+        Update
+    </h2>
+</div>
 
 Run the commands below in the root folder of this project to receive the newest updates.
 
@@ -324,7 +359,12 @@ git submodule update --recursive --remote
 
 To sync commits with upstream repos,  refer to this doc: [Syncing a fork | Github](https://help.github.com/articles/syncing-a-fork/).
 
-## Commit
+<div align="center">
+    <img src='./img/commit.png' height="128px"/>
+    <h2>
+        Commit
+    </h2>
+</div>
 
 If you want to commit changes to this repo, please first `push` the changes in the submodule, then go back to the root folder of this project and run the commands below.
 
@@ -335,7 +375,12 @@ git commit -m '<Commit Message>'
 git push
 ```
 
-## TODO List
+<div align="center">
+    <img src='./img/todo-list.png' height="128px"/>
+    <h2>
+        TODO List
+    </h2>
+</div>
 
 - [x] Downloader
 - [x] Multi-process support for Document Downloader
@@ -343,10 +388,31 @@ git push
 - [ ] Crawl by date
 - [ ] Multi-process support for Task Distributor and Content List Downloader
 
-## Reference
+<div align="center">
+    <img src='./img/reference.png' height="128px"/>
+    <h2>
+        Reference
+    </h2>
+</div>
 
 [sixs/wenshu_spider](https://github.com/sixs/wenshu_spider)
 
 [jhao104/proxy_pool](https://github.com/jhao104/proxy_pool)
 
 [doloopwhile/PyExecJS](https://github.com/doloopwhile/PyExecJS)
+
+
+
+-----
+
+
+<div align="center">
+ <pre>
+_________                   _____     ________       ______________            
+__  ____/_________  __________  /_    __  ___/__________(_)_____  /____________
+_  /    _  __ \  / / /_  ___/  __/    _____ \___  __ \_  /_  __  /_  _ \_  ___/
+/ /___  / /_/ / /_/ /_  /   / /_      ____/ /__  /_/ /  / / /_/ / /  __/  /    
+\____/  \____/\__,_/ /_/    \__/      /____/ _  .___//_/  \__,_/  \___//_/     
+                                             /_/                               
+ </pre>
+</div>
