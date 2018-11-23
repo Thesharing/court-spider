@@ -293,7 +293,7 @@ To run downloader, run the command below:
 python main.py -d download
 ```
 
-Before you run the downloader, you may need to extract all the DocID from local files (written by spider) to Redis, run the command below:
+Before you run the downloader, you may need to extract all the DocID from local files stored in `./temp`  to Redis. If you want to download docs from DocID in `./data`, you need to move it from `./data` to `./temp` **manually**, and move back to `./data` after reading. Then run the command below:
 
 ```bash
 python main.py -d read
