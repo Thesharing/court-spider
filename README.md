@@ -103,7 +103,7 @@ And then the execjs library will work out fine.
 
 *Windows:*
 
-Use <u>Ubuntu on bash</u> on Windows if you are using Windows 10. 
+Use <u>Ubuntu on bash on Windows</u> if you are using Windows 10. 
 
 Use VMWare or VirtualBox if you are using Windows 8 or 7. In VMWare you need to config port forwarding of NAT network in order to access Redis in Windows.
 
@@ -339,6 +339,7 @@ Optional arguments:
 | -s [{date,district}], --spider [{date,district}]     | Start a spider to crawl data by date (not implemented yet) or by district |
 | -d [{read,download}], --downloader [{read,download}] | Read content from doc-id files (`read`) or start a downloader (`download`) |
 | -c [config.json], --config [config.json]             | Specify the filename of config                               |
+| --clean                                              | Delete all the data in Redis at first, only useful for `-d read` |
 
 `-s` and `-d` should not be used at the same time.
 
@@ -405,7 +406,6 @@ git push
 
 
 -----
-
 
 <div align="center">
  <pre>
