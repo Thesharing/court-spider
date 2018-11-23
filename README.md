@@ -42,7 +42,7 @@ Use `git clone git@github.com:Thesharing/court-spider.git --recursive ` to clone
 Requires [Python](https://www.python.org/downloads/) >= 3.5, and the newest version of [Anaconda 3](https://www.anaconda.com/download/) is better.
 
 ```bash
-conda install certifi chardet idna numpy requests six urllib3 werkzeug Flask lxml python-dateutil beautifulsoup4
+conda install certifi chardet idna numpy requests six urllib3 werkzeug Flask lxml python-dateutil beautifulsoup4 lxml
 pip install opencv-python PyExecJS pymongo redis
 ```
 
@@ -250,6 +250,7 @@ If you want to resume from a breakpoint, modify `start` part like this:
         Execution
     </h2>
 </div>
+
 **First**, run Redis.
 
 *Use Ubuntu on bash on Windows if you are using Windows 10.* 
