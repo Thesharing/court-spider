@@ -354,7 +354,7 @@ To enable **multi-process** mode, specify the multi-process config in config.jso
 
 `spider` , `downloader`  and `notifier` is the number of spiders and downloaders (at present multi-process spider is not supported).
 
-Then run without `spiser` or `downloader`  like this:
+Then run without none of `spiser` ,  `downloader`  and `notifier` like this:
 
 ```bash
 python main.py
@@ -366,13 +366,13 @@ Optional arguments:
 
 | Argument name                            | Explanation                                                  |
 | ---------------------------------------- | ------------------------------------------------------------ |
-| -h, --help                               | Show this help message and exit                              |
 | spider --district, s --district          | Start a spider to crawl data by district                     |
 | downloader --read, d --read              | Read content from doc-id files                               |
 | downloader --download, d --download      | Start a downloader                                           |
 | notifier                                 | Start a notifier                                             |
 | --config [config.json], -c [config.json] | Specify the filename of config                               |
 | --clean                                  | Delete all the data in Redis at start, only useful for `-d read` |
+| -h, --help                               | Show this help message and exit                              |
 
 `spider` , `downloader`and `notifier` should not be used at the same time.
 
