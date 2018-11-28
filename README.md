@@ -18,6 +18,8 @@
   * [New Folders](#New-Folders)
 * [Config](#--------config----)
 * [Execution](#--------execution----)
+  * [Instructions](#Instructions)
+  * [Functions](#Functions) 
   * [Argument Lists](#Argument-Lists)
 * [Update](#--------update----)
 * [Commit](#--------commit----)
@@ -226,7 +228,23 @@ Customize the spider in `config.json`:
   "multiprocess": {
     "total": 8,
     "spider": 0,
-    "downloader": 8
+    "downloader": 8,
+    "notifier": 0
+  },
+  "notifier": {
+    "type": "wechat",
+    "period": 10,
+    "wechat": {
+      "receiver": "filehelper",
+      "cmd": false
+    },
+    "email": {
+      "sender": "aaa@bbb.ccc",
+      "password": "aaabbbccc",
+      "server_addr": "smtp.bbb.ccc",
+      "receiver": "aaa@bbb.ccc",
+      "ssl": false
+    }
   }
 }
 ```
@@ -250,6 +268,8 @@ If you want to resume from a breakpoint, modify `start` part like this:
         Execution
     </h2>
 </div>
+
+### Instructions
 
 **First**, run Redis.
 
@@ -277,35 +297,45 @@ Change the website used to validate the proxies in `Util/utilFunction.py`.
 
 Make sure the number of `useful_proxy` > 0, so that the spider can run with available proxies.
 
-**Finally**, run the spider.
+**Finally**, run the functions you need.
 
 (In `court-spider/spider`)
 
-To run spider, run the command below:
+### Functions
+
+#### Spider
+
+To run **spider**, run the command below:
 
 ```bash
-python main.py -s date
+python main.py spider --date
 ```
 
-To run downloader, run the command below:
+#### Downloader
+
+To run **downloader**, run the command below:
 
 ```bash
-python main.py -d download
+python main.py downloader --download
 ```
 
 Before you run the downloader, you may need to extract all the DocID from local files stored in `./temp`  to Redis. If you want to download docs from DocID in `./data`, you need to move it from `./data` to `./temp` **manually**, and move back to `./data` after reading. Then run the command below:
 
 ```bash
-python main.py -d read
+python main.py downloader --read
 ```
 
-If you are running two o more task at the same time, you can specify different configs like this:
+#### Specify config file
+
+If you are running two o more task at the same time, you can specify **different configs** like this:
 
 ```bash
-python main.py -c config.json
+python main.py --config config.json
 ```
 
-To enable multi-process mode, specify the multi-process config in config.json like this:
+#### Multi-Process Mode
+
+To enable **multi-process** mode, specify the multi-process config in config.json like this:
 
 ```json
 {
@@ -313,17 +343,18 @@ To enable multi-process mode, specify the multi-process config in config.json li
   "multiprocess": {
     "total": 8,
     "spider": 0,
-    "downloader": 8
+    "downloader": 8,
+    "notifier": 0
   },
   "...": "..."
 }
 ```
 
-`total` is the total number of processes  to run spiders and downloaders, which should be equal to the number of logic cores of you CPU (you can see the number in Task Manager in Windows).
+`total` is the total number of processes  to run spiders and downloaders, which should be equal to the number of logic cores of the CPU on your device (you can see the number in Task Manager in Windows, or run `grep -c ^processor /proc/cpuinfo` in Linux).
 
-`spider` and `downloader` is the number of spiders and downloaders (at present multi-process spider is not supported).
+`spider` , `downloader`  and `notifier` is the number of spiders and downloaders (at present multi-process spider is not supported).
 
-Then run without `-s` or `-d`  like this:
+Then run without `spiser` or `downloader`  like this:
 
 ```bash
 python main.py
@@ -333,17 +364,19 @@ python main.py
 
 Optional arguments:
 
-| Argument name                                        | Explaination                                                 |
-| ---------------------------------------------------- | ------------------------------------------------------------ |
-| -h, --help                                           | Show this help message and exit                              |
-| -s [{date,district}], --spider [{date,district}]     | Start a spider to crawl data by date (not implemented yet) or by district |
-| -d [{read,download}], --downloader [{read,download}] | Read content from doc-id files (`read`) or start a downloader (`download`) |
-| -c [config.json], --config [config.json]             | Specify the filename of config                               |
-| --clean                                              | Delete all the data in Redis at first, only useful for `-d read` |
+| Argument name                            | Explanation                                                  |
+| ---------------------------------------- | ------------------------------------------------------------ |
+| -h, --help                               | Show this help message and exit                              |
+| spider --district, s --district          | Start a spider to crawl data by district                     |
+| downloader --read, d --read              | Read content from doc-id files                               |
+| downloader --download, d --download      | Start a downloader                                           |
+| notifier                                 | Start a notifier                                             |
+| --config [config.json], -c [config.json] | Specify the filename of config                               |
+| --clean                                  | Delete all the data in Redis at start, only useful for `-d read` |
 
-`-s` and `-d` should not be used at the same time.
+`spider` , `downloader`and `notifier` should not be used at the same time.
 
-Enable multi-process mode if both `-s` and `-d` is not used.
+Enable multi-process mode if none of `spider`, `downloader` and `notifier` is not used.
 
 <div align="center">
     <img src='./img/update.png' height="128px"/>
