@@ -364,15 +364,15 @@ python main.py
 
 Optional arguments:
 
-| Argument name                            | Explanation                                                  |
-| ---------------------------------------- | ------------------------------------------------------------ |
-| spider --district, s --district          | Start a spider to crawl data by district                     |
-| downloader --read, d --read              | Read content from doc-id files                               |
-| downloader --download, d --download      | Start a downloader                                           |
-| notifier                                 | Start a notifier                                             |
-| --config [config.json], -c [config.json] | Specify the filename of config                               |
-| --clean                                  | Delete all the data in Redis at start, only useful for `-d read` |
-| -h, --help                               | Show this help message and exit                              |
+| Argument name          | Short name       | Explanation                              |
+| ---------------------- | ---------------- | ---------------------------------------- |
+| spider --district      | s --district     | Start a spider to crawl data by district |
+| downloader --clean     | d --clean        | Delete all the data in Redis             |
+| downloader --read      | d --read         | Read content from doc-id files           |
+| downloader --download  | d --download     | Start a downloader                       |
+| notifier               | n                | Start a notifier                         |
+| --config [config.json] | -c [config.json] | Specify the filename of config           |
+| --help                 | -h               | Show the help message                    |
 
 `spider` , `downloader`and `notifier` should not be used at the same time.
 
@@ -385,7 +385,7 @@ Enable multi-process mode if none of `spider`, `downloader` and `notifier` is no
     </h2>
 </div>
 
-Run the commands below in the root folder of this project to receive the newest updates.
+Run the commands below in the root folder of this project to fetch the newest updates.
 
 ```bash
 git pull
@@ -419,6 +419,7 @@ git push
 
 - [x] Downloader
 - [x] Multi-process support for Document Downloader
+- [x] Notfier
 - [ ] Extractor [ONGOING]
 - [ ] Crawl by date
 - [ ] Multi-process support for Task Distributor and Content List Downloader
