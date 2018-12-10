@@ -15,7 +15,7 @@
   * [Redis](#Redis)
   * [MongoDB](#MongoDB)
   * [NodeJS](#NodeJS)
-  * [New Folders](#New-Folders)
+  * [New Folders](#Create-New-Folders)
 * [Config](#--------config----)
 * [Execution](#--------execution----)
   * [Instructions](#Instructions)
@@ -39,7 +39,7 @@ Use `git clone git@github.com:Thesharing/court-spider.git --recursive ` to clone
 
 ### Python
 
-*Linux or Windows:*
+*For Linux or Windows:*
 
 Requires [Python](https://www.python.org/downloads/) >= 3.5, and the newest version of [Anaconda 3](https://www.anaconda.com/download/) is better.
 
@@ -54,7 +54,7 @@ pip install opencv-python PyExecJS pymongo redis
 
 **NOTE**
 
-*If you are using Windows:*
+*For Windows:*
 
 Edit [path of site-packages](https://stackoverflow.com/questions/122327/how-do-i-find-the-location-of-my-python-site-packages-directory)/execjs/\_external\_runtime.py and replace the function `_exec_with_pipe` like this:
 
@@ -103,7 +103,7 @@ And then the execjs library will work out fine.
 
 ### Redis
 
-*Windows:*
+*For Windows:*
 
 Use <u>Ubuntu on bash on Windows</u> if you are using Windows 10. 
 
@@ -113,7 +113,7 @@ Use VMWare or VirtualBox if you are using Windows 8 or 7. In VMWare you need to 
 
 \* Also you can install pre-compiled version for Windows referring to this page: [Redis Install | Runoob](http://www.runoob.com/redis/redis-install.html)
 
-*Linux or Bash on Ubuntu on Windows:*
+*For Linux, or Bash on Ubuntu on Windows:*
 
 ```Bash
 wget http://download.redis.io/releases/redis-4.0.11.tar.gz
@@ -128,11 +128,11 @@ make
 
 ### MongoDB
 
-*Linux:*
+*For Linux:*
 
 Refer to [the official installation document](https://docs.mongodb.com/manual/administration/install-on-linux/).
 
-*Windows*:
+*For Windows*:
 
 [Download the executable installer](https://www.mongodb.com/download-center/community) and run it, follow the installer guide. After finishing the installation MongoDB will start automatically. 
 
@@ -142,7 +142,7 @@ Also refer to [the official installation document](https://docs.mongodb.com/manu
 
 ### NodeJS
 
-*Linux:*
+*For Linux:*
 
 ```Bash
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
@@ -150,15 +150,15 @@ sudo apt-get install -y nodejs
 nodejs --version
 ```
 
-*Windows:*
+*For Windows:*
 
 Download lastest LST version executable installer to install.
 
 [Reference to install NodeJS](https://nodejs.org/zh-cn/download/package-manager/#debian-and-ubuntu-based-linux-distributions)
 
-### New Folders
+### Create New Folders
 
-*Linux or Windows:*
+*For Linux or Windows:*
 
 ```bash
 cd spider
@@ -179,71 +179,72 @@ At first run, copy `config.example.json` as `config.json` and modify the configs
 
 Customize the spider in `config.json`:
 
-```json
+```
 {
-  "start": {
+  "start": { 						// 设定Spider的起始日期、地区和法院
     "date": "2017-05-11",
     "district": "北京市",
     "court": null
   },
-  "search": {
-    "keyword": "*",
-    "type": null,
-    "reason": {
-      "value": "知识产权与竞争纠纷",
-      "level": 2
+  "search": {						// 设定检索条件，这些会生成文字版的检索条件
+    "keyword": "*", 				// 关键词
+    "type": null, 					// 案件类型
+    "reason": {						// 案由
+      "value": "知识产权与竞争纠纷",	  // 案由名称
+      "level": 2 // 案由等级，例如二级案由
     },
-    "court": {
-      "value": null,
-      "level": 0,
-      "indicator": false
+    "court": {						// 法院
+      "value": null,				// 法院名称
+      "level": 0,					// 法院层级，例如中级人民法院
+      "indicator": false			// 是检索当前层级还是其下一层级的法院
     },
-    "district": null
+    "district": null 				// 地区
   },
   "condition": {
-    "法院层级": null,
+    "法院层级": null,  				 // 检索条件，这些会直接加到检索条件里
     "案件类型": "民事案件",
     "审判程序": null,
     "文书类型": null
   },
-  "config": {
-    "max_retry": 10,
-    "proxy": true,
-    "timeout": 60
+  "config": { 						// Spider程序设定
+    "max_retry": 10, 				// 抓取失败时的最大重试次数
+    "proxy": true, 					// 是否通过代理抓取
+    "timeout": 60 					// 抓取的超时时间
   },
-  "database": {
-    "redis": {
-      "host": "localhost",
-      "port": 6379
+  "database": { 					// 数据库设定
+    "redis": {						// Redis
+      "host": "localhost", 			// 地址
+      "port": 6379 					// 端口号
     },
-    "mongodb": {
-      "host": "localhost",
-      "port": 27017,
-      "database": "spider"
+    "mongodb": {					// MongoDB
+      "host": "localhost", 			// 地址
+      "port": 27017, 				// 端口号
+      "database": "spider" 			// 集合名称
     }
   },
-  "log": {
-    "level": "INFO"
+  "log": { 							// 日志设置
+    "level": "INFO" 				// 日志等级
+      								//有DEBUG, INFO, WARNING, ERROR, CRITICAL几个等级
   },
-  "multiprocess": {
-    "total": 8,
-    "spider": 0,
-    "downloader": 8,
-    "notifier": 0
+  "multiprocess": { 				// 多进程模式设置
+    "total": 8, 					// 总进程数
+    "spider": 0, 					// Spider数量
+    "downloader": 8, 				// Downloader数量
+    "notifier": 0 					// Notifier数量
   },
-  "notifier": {
-    "type": "wechat",
-    "period": 10,
-    "wechat": {
-      "receiver": "filehelper",
-      "cmd": false
+  "notifier": {						// Notifier设置
+    "type": "wechat",				// 类型
+    "period": 10,					// 监视周期
+    "wechat": {						// 微信模式设置
+      "receiver": "filehelper", 	// 接收人的微信名
+      "cmd": false					// 在命令行中显示二维码还是保存成图片
     },
-    "email": {
-      "sender": "aaa@bbb.ccc",
-      "password": "aaabbbccc",
-      "server_addr": "smtp.bbb.ccc",
-      "receiver": "aaa@bbb.ccc",
-      "ssl": false
+    "email": { 						// 邮件模式设置
+      "sender": "aaa@bbb.ccc",		// 发送邮箱地址
+      "password": "aaabbbccc",		// 发送邮箱的密码
+      "server_addr": "smtp.bbb.ccc", // 发送邮箱的STMP地址
+      "receiver": "aaa@bbb.ccc",	// 接收消息的邮箱地址
+      "ssl": false					// 是否通过SSL加密链接
     }
   }
 }
@@ -271,19 +272,29 @@ If you want to resume from a breakpoint, modify `start` part like this:
 
 ### Instructions
 
-**First**, run Redis.
+**First**, run Redis:
 
-*Use Ubuntu on bash on Windows if you are using Windows 10.* 
+*\*Use Ubuntu on bash on Windows if you are using Windows 10.\** 
 
-(In the path of Redis)
+(In the folder path of Redis)
 
 ```bash
 src/redis-server
 ```
 
-**Then**, run the proxy.
+**Second**, run MongoDB:
 
-(In `court-spider/proxy/Run`)
+*For Windows:*
+
+If you install MongoDB as service, you can start it in `services.msc`. Usually it starts automatically.
+
+*For Linux:*
+
+ `sudo service mongod start`
+
+**Third**, run Proxy.
+
+(In the folder path `court-spider/proxy/Run`)
 
 ```bash
 python main.py
@@ -291,15 +302,15 @@ python main.py
 
 Access [127.0.0.1:5010/get_status](http://127.0.0.1:5010/get_status) to check the status of proxy pool.
 
-`raw_proxy` means unvalidated proxy, `useful_proxy` means validated proxy. 
+`raw_proxy` means the count of unvalidated proxy, `useful_proxy` means the count of validated proxy. 
 
-Change the website used to validate the proxies in `Util/utilFunction.py`.
+You can change the website used to validate the proxies in `Util/utilFunction.py`.
 
 Make sure the number of `useful_proxy` > 0, so that the spider can run with available proxies.
 
-**Finally**, run the functions you need.
+**Finally**, run Spider with the functions you need as indicated below.
 
-(In `court-spider/spider`)
+(In folder path `court-spider/spider`)
 
 ### Functions
 
@@ -418,10 +429,23 @@ git push
 </div>
 
 - [x] Downloader
+
 - [x] Multi-process support for Document Downloader
-- [x] Notfier
+
+- [x] Notifier
+
 - [ ] Extractor [ONGOING]
+
+    - [ ] 争议焦点划分
+
+    - [ ] 审判程序之间的关联
+
+    - [ ] 诉讼参与人信息拆分
+
+    - [ ] 整段文段的划分
+
 - [ ] Crawl by date
+
 - [ ] Multi-process support for Task Distributor and Content List Downloader
 
 <div align="center">
