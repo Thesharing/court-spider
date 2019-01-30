@@ -1,6 +1,6 @@
 [submodule "spider"]
 	path = spider
-	url = git@github.com:Thesharing/wenshu_spider.git
+	url = git@github.com:Thesharing/wenshu-spider.git
 [submodule "proxy"]
 	path = proxy
 	url = git@github.com:Thesharing/proxy_pool.git
